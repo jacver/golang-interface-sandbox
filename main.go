@@ -2,13 +2,14 @@ package main
 
 import "fmt"
 
-// creating interfact
+// creating interface
 type bot interface {
-	getGreeting() string
+	getGreeting() string // anyone with this function can now call printGreeting()
+
 }
 
 type englishBot struct{} // declaring empty structs
-type spanishBot struct{}
+type spanishBot struct{} // these types will have different getGreeting() fn's 
 
 func main() {
 
@@ -35,6 +36,7 @@ func (sb spanishBot) getGreeting() string {
 // On the other hand, our printGreeting() function will have very similar logic regardless of language
 // Solution: use interfacing
 
+// any type with getGreeting() can call this
 func printGreeting(b bot) {
 	fmt.Println(b.getGreeting())
 }
